@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:sec="http://www.springframework.org/security/tags"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<ui:composition template="/layout.xhtml">
+
+    <ui:define name="title">
+
+    </ui:define>
+
+
+    <ui:define name="content">
+        <c:set var="movie" value="#{moviesController.movie}"/>
+        <ui:param name="moviep" value="#{moviesController.getMoviebyid(param['id'])}"/>
+
+        <ui:fragment rendered="#{!(movie==null)}">
+        <h:outputLabel value="#{movie.title}"/>
+        </ui:fragment>
+        <ui:fragment rendered="#{(movie==null)}">
+            wrong page
+        </ui:fragment>
+    </ui:define>
+
+</ui:composition>
+</html>
