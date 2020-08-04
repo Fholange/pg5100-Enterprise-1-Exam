@@ -1,12 +1,11 @@
 package no.kristiania.service;
 
-import no.kristiania.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
-import javax.swing.text.html.parser.Entity;
+import java.util.Random;
 import java.util.function.Supplier;
 
 @Service
@@ -24,7 +23,8 @@ public class DefaultDataInitializerService {
     @PostConstruct
     public void initialize(){
 
-        userService.createUser("foo", "123");
+         attempt(()-> userService.createUser("foo", "123"));
+
 
          attempt(() -> movieService.createMovie(
                  "The Godfather",
@@ -62,8 +62,34 @@ public class DefaultDataInitializerService {
                 "Johnny is a successful bank executive who lives quietly in a San Francisco townhouse with his future wife Lisa. One day she unscrupulously seduces his best friend Mark. Nothing will ever be the same again."
         ));
 
+        createReviews();
 
 
+    }
+
+    private void createReviews(){
+        String[] reviews = {
+                "The end ruined everything!",
+                "This movie is the best because...",
+                "These Reviews are paid! This movie sucks",
+                "Best movie ever!!!"};
+
+        for(int i = 1; i < 5; i++){
+
+            String username = "testUser"+i;
+
+            attempt(()-> userService.createUser(username, "123"));
+
+            for(int j = 1; j<8; j++){
+
+                long movieId = j;
+                //random number between 1-5
+                int randomNumber = new Random().nextInt(6)+1;
+
+                attempt(() -> movieService.createReview( movieId, username, reviews[randomNumber-1], randomNumber));
+            }
+
+        }
     }
 
 

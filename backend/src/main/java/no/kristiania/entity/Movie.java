@@ -23,6 +23,8 @@ public class Movie {
     @NotBlank
     private String plot;
 
+    private Double avgRating = 0.0;
+
     public Long getId() {
         return id;
     }
@@ -53,5 +55,13 @@ public class Movie {
 
     public void setPlot(String plot) {
         this.plot = plot;
+    }
+
+    public Double getAvgRating() {
+        return avgRating;
+    }
+
+    public void setAvgRating(Double avgRating) {
+        this.avgRating = avgRating;
     }
 }

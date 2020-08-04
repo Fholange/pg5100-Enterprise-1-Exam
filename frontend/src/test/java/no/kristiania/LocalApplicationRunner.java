@@ -1,7 +1,7 @@
 package no.kristiania;
 
 import org.springframework.boot.SpringApplication;
-
+//copied file from main rep
 /**
  * Created by arcuri82 on 14-Dec-17.
  */

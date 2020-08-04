@@ -26,7 +26,7 @@ public class ReviewServiceTest extends ServiceTestBase{
 
 
     @Test
-    public void testCreateReviewAndRetrieveByMovie(){
+    public void testCreateReview(){
         String movieTitle = "Movie Title";
         String username = "foo";
         String reviewText = "a great Movie with some flaws ";
@@ -34,7 +34,7 @@ public class ReviewServiceTest extends ServiceTestBase{
         long movieId = movieService.createMovie(movieTitle, "firstname lastname", "Interesting Movie about...");
         userService.createUser(username, "123");
 
-        reviewService.createReview(movieId, username, reviewText, 4);
+        movieService.createReview(movieId, username, reviewText, 4);
 
         assertEquals(1, reviewService.getAllReviewsByMovie(movieId).size());
         assertEquals(reviewText, reviewService.getAllReviewsByMovie(movieId).get(0).getReviewText());
@@ -42,21 +42,30 @@ public class ReviewServiceTest extends ServiceTestBase{
 
     }
 
+
     @Test
-    public void testCreateReviewAndRetrieveByUser(){
+    public void testComputeAvg(){
         String movieTitle = "Movie Title";
-        String username = "foo";
+        String userA = "fooA";
+        String userB = "fooB";
+        String userC = "fooC";
         String reviewText = "a great Movie with some flaws ";
 
         long movieId = movieService.createMovie(movieTitle, "firstname lastname", "Interesting Movie about...");
-        userService.createUser(username, "123");
+        userService.createUser(userA, "123");
+        userService.createUser(userB, "123");
+        userService.createUser(userC, "123");
 
-        reviewService.createReview(movieId, username, reviewText, 4);
 
-        assertEquals(1, reviewService.getAllReviewsByUser(username).size());
-        assertEquals(reviewText, reviewService.getAllReviewsByUser(username).get(0).getReviewText());
+        movieService.createReview(movieId, userA, reviewText, 4);
+        movieService.createReview(movieId, userB, reviewText, 3);
+        movieService.createReview(movieId, userC, reviewText, 2);
+
+        //(4+3+2)/3 = 3    expected: 3
+
+        assertEquals((Double) 3.0 , movieService.computeAverageRating(movieId));
+
     }
-
 
 
 }

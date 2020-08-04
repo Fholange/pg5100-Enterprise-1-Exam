@@ -15,6 +15,12 @@ public class MovieServiceTest extends ServiceTestBase{
     @Autowired
     private MovieService movieService;
 
+    @Autowired
+    private ReviewService reviewService;
+
+    @Autowired
+    private UserService userService;
+
     @Test
     public void testCreateMovie(){
 
@@ -34,6 +40,28 @@ public class MovieServiceTest extends ServiceTestBase{
         movieService.deleteMovie(movieId);
         assertEquals(0, movieService.getAllMovies().size());
     }
+
+    @Test
+    public void testSortByRating(){
+        String movieTitleA = "Movie Title A";
+        String movieTitleB = "Movie Title B";
+        String userA = "fooA";
+        String reviewText = "a great Movie with some flaws ";
+
+        userService.createUser(userA, "123");
+
+        long movieIdA = movieService.createMovie(movieTitleA, "Name", "Movie about...");
+        long movieIdB = movieService.createMovie(movieTitleB, "Name", "Movie about...");
+
+        movieService.createReview(movieIdA, userA, reviewText, 1);
+        movieService.createReview(movieIdB, userA, reviewText, 4);
+
+        assertEquals(movieTitleB, movieService.getMoviesSortedByRating().get(0).getTitle());
+
+
+
+    }
+
 
 
 

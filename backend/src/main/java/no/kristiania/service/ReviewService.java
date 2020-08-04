@@ -20,47 +20,12 @@ public class ReviewService {
     private EntityManager em;
 
     public List<Review> getAllReviewsByMovie(long movieId){
-        TypedQuery<Review> query = em.createQuery("select r from Review r where r.reviewId.movieId=?1", Review.class);
+        TypedQuery<Review> query = em.createQuery("select r from Review r where r.reviewId.movieId=?1 order by r.rating desc", Review.class);
         query.setParameter(1, movieId);
 
         return query.getResultList();
 
     }
 
-    public List<Review> getAllReviewsByUser(String userId){
-        TypedQuery<Review> query = em.createQuery("select r from Review r where r.reviewId.userId=?1", Review.class);
-        query.setParameter(1, userId);
-
-        return query.getResultList();
-
-    }
-
-    public void createReview(long movieId, String userId, String reviewText, int rating){
-        Movie movie = em.find(Movie.class, movieId);
-        if(movie == null){
-            throw new IllegalArgumentException("Movie id " + movieId + "does not exist!");
-        }
-
-        User user = em.find(User.class, userId);
-
-        if(user == null){
-            throw new IllegalArgumentException("User id " + userId + "does not exist!");
-        }
-
-        ReviewId reviewId = new ReviewId(userId, movieId);
-
-        Review review = em.find(Review.class, reviewId);
-
-        if(review == null){
-            review = new Review();
-        }
-
-        review.setReviewText(reviewText);
-        review.setReviewId(reviewId);
-        review.setRating(rating);
-        //remember to test this
-        em.persist(review);
-
-    }
 
 }

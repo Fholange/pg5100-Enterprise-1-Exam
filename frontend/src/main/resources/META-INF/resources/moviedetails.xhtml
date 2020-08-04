@@ -12,20 +12,15 @@
 <ui:composition template="/layout.xhtml">
 
     <ui:define name="title">
-
+        Moviedetails
     </ui:define>
 
 
     <ui:define name="content">
-        <c:set var="movie" value="#{moviesController.movie}"/>
-        <ui:param name="moviep" value="#{moviesController.getMoviebyid(param['id'])}"/>
-
-        <ui:fragment rendered="#{!(movie==null)}">
-        <h:outputLabel value="#{movie.title}"/>
-        </ui:fragment>
-        <ui:fragment rendered="#{(movie==null)}">
-            wrong page
-        </ui:fragment>
+        <c:set var="movie" value="#{moviesController.selectedMovie}"> </c:set>
+        <h1><h:outputLabel value="#{movie.title}"> </h:outputLabel> </h1>
+        <p><h:outputLabel value="#{movie.plot}"> </h:outputLabel></p>
+        <p><h:outputLabel value="#{movie.director}"> </h:outputLabel></p>
     </ui:define>
 
 </ui:composition>
