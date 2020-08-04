@@ -21,7 +21,7 @@ public class IndexPO extends LayoutPO {
 
     @Override
     public boolean isOnPage() {
-        return getDriver().getTitle().contains("Movies");
+        return getDriver().getTitle().contains("Homepage");
     }
 
 
