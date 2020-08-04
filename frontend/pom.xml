@@ -142,7 +142,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <finalName>quizgame</finalName>
+                    <finalName>movieratings</finalName>
                     <classifier>exec</classifier>
                 </configuration>
                 <executions>
