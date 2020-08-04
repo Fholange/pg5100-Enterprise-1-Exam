@@ -26,5 +26,15 @@ public class MovieServiceTest extends ServiceTestBase{
 
     }
 
+    @Test
+    public void testDeleteMovie(){
+        String title = "Movie Title";
+        long movieId = movieService.createMovie(title, "firstname lastname", "Interesting Movie about...");
+        assertEquals(1, movieService.getAllMovies().size());
+        movieService.deleteMovie(movieId);
+        assertEquals(0, movieService.getAllMovies().size());
+    }
+
+
 
 }

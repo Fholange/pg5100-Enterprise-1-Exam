@@ -1,6 +1,9 @@
 package no.kristiania.service;
 
 import no.kristiania.entity.Movie;
+import no.kristiania.entity.Review;
+import no.kristiania.entity.ReviewId;
+import no.kristiania.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,6 +50,8 @@ public class MovieService {
         em.remove(movie);
 
     }
+
+
 
 
 }

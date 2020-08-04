@@ -3,9 +3,11 @@ package no.kristiania.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
+@Table(name ="MOVIES")
 public class Movie {
 
     @Id

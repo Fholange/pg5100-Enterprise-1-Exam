@@ -1,6 +1,7 @@
 package no.kristiania.service;
 
 import no.kristiania.entity.Movie;
+import no.kristiania.entity.Review;
 import no.kristiania.entity.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +24,7 @@ public class ResetService {
 
         deleteEntities(User.class);
         deleteEntities(Movie.class);
+        deleteEntities(Review.class);
 
 
 
