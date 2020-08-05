@@ -30,7 +30,7 @@ public class moviesController implements Serializable {
 
     private Movie selectedMovie;
 
-    private String reviewText;
+    private String reviewText ="";
 
     private String rating;
 
@@ -73,7 +73,7 @@ public class moviesController implements Serializable {
     }
 
     public String addReview(){
-        if(rating == null){
+        if(rating == null || reviewText.length()> 999){
             return "/moviedetails.jsf?faces-redirect=true&error=true";
         }else {
             int ratingValue = Integer.parseInt(rating);
@@ -81,7 +81,7 @@ public class moviesController implements Serializable {
             movieService.createReview(selectedMovie.getId(), getUserName(), reviewText, (ratingValue));
             setMovieReviewsSortedByRating();
 
-            setReviewText(null);
+            setReviewText("");
             return "/moviedetails.jsf?faces-redirect=true";
 
         }

@@ -4,8 +4,8 @@ When i have copied or adapted code from class i have stated so in that file.
 
 I have done requirements R1, R2, R3  partially r4 and did not add any extra features(R5)
 
-You start the local server by running LocalApplicationRunner in the fronteds test folder. and you can access it
-on localhost:8080. 
+You start the local server by running LocalApplicationRunner in the fronteds test folder(frontend/src/test/java/no/kristiania), 
+and you can access it on localhost:8080. 
 
 
 
