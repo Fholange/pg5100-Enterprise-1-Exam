@@ -67,5 +67,27 @@ public class ReviewServiceTest extends ServiceTestBase{
 
     }
 
+    @Test
+    public void getReviewSortedByDate(){
+        String movieTitle = "Movie Title";
+        String userA = "fooA";
+        String userB = "fooB";
+        String userC = "fooC";
+        String reviewText = "a great Movie with some flaws ";
+
+        long movieId = movieService.createMovie(movieTitle, "firstname lastname", "Interesting Movie about...");
+        userService.createUser(userA, "123");
+        userService.createUser(userB, "123");
+        userService.createUser(userC, "123");
+
+        movieService.createReview(movieId, userC, reviewText, 2);
+        movieService.createReview(movieId, userA, reviewText, 4);
+        movieService.createReview(movieId, userB, reviewText, 3);
+
+        //userB should be the at index 0 since it posted the last review
+        assertEquals(userB, reviewService.getAllReviewsSortedByDate(movieId).get(0).getReviewId().getUserId());
+
+    }
+
 
 }
