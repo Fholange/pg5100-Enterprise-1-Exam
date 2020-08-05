@@ -1,3 +1,4 @@
+
 //this code was copied from the main repo of this class
 //https://github.com/arcuri82/testing_security_development_enterprise_systems/blob/master/intro/exercise-solutions/quiz-game/part-11/backend/src/main/java/org/tsdes/intro/exercises/quizgame/backend/entity/User.java
 package no.kristiania.entity;

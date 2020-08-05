@@ -36,8 +36,8 @@ public class ReviewServiceTest extends ServiceTestBase{
 
         movieService.createReview(movieId, username, reviewText, 4);
 
-        assertEquals(1, reviewService.getAllReviewsByMovie(movieId).size());
-        assertEquals(reviewText, reviewService.getAllReviewsByMovie(movieId).get(0).getReviewText());
+        assertEquals(1, reviewService.getAllReviewsSortedByAvgRating(movieId).size());
+        assertEquals(reviewText, reviewService.getAllReviewsSortedByAvgRating(movieId).get(0).getReviewText());
 
 
     }

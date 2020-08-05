@@ -1,5 +1,5 @@
-//I copied this file from the main repo of this class
-
+//I copied most of this file from the main repo of this class
+//https://github.com/arcuri82/testing_security_development_enterprise_systems/blob/master/intro/exercise-solutions/quiz-game/part-11/frontend/src/main/java/org/tsdes/intro/exercises/quizgame/frontend/WebSecurityConfig.java
 package no.kristiania.frontend;
 
 import org.springframework.beans.factory.annotation.Autowired;

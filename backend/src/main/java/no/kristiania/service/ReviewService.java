@@ -19,8 +19,16 @@ public class ReviewService {
     @Autowired
     private EntityManager em;
 
-    public List<Review> getAllReviewsByMovie(long movieId){
+    public List<Review> getAllReviewsSortedByAvgRating(long movieId){
         TypedQuery<Review> query = em.createQuery("select r from Review r where r.reviewId.movieId=?1 order by r.rating desc", Review.class);
+        query.setParameter(1, movieId);
+
+        return query.getResultList();
+
+    }
+
+    public List<Review> getAllReviewsSortedByDate(long movieId){
+        TypedQuery<Review> query = em.createQuery("select r from Review r where r.reviewId.movieId=?1 order by r.dateCreated desc", Review.class);
         query.setParameter(1, movieId);
 
         return query.getResultList();

@@ -80,7 +80,7 @@ public class DefaultDataInitializerService {
 
             attempt(()-> userService.createUser(username, "123"));
 
-            for(int j = 1; j<8; j++){
+            for(int j = 2; j<8; j++){
 
                 long movieId = j;
                 //random number between 1-5
@@ -97,6 +97,7 @@ public class DefaultDataInitializerService {
 
 
     //this i copied from the class main repo
+    //https://github.com/arcuri82/testing_security_development_enterprise_systems/blob/master/intro/exercise-solutions/quiz-game/part-11/backend/src/main/java/org/tsdes/intro/exercises/quizgame/backend/service/DefaultDataInitializerService.java
     private  <T> T attempt(Supplier<T> lambda){
         try{
             return lambda.get();

@@ -1,3 +1,5 @@
+//copied most of this file
+//https://github.com/arcuri82/testing_security_development_enterprise_systems/blob/master/intro/exercise-solutions/quiz-game/part-11/frontend/src/main/java/org/tsdes/intro/exercises/quizgame/frontend/controller/UserInfoController.java
 package no.kristiania.frontend.controller;
 
 import org.springframework.security.core.context.SecurityContextHolder;

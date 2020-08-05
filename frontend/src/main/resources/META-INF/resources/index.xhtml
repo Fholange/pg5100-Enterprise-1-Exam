@@ -27,7 +27,7 @@
 
 
         <sec:anonymous>
-            Log in
+            You are not logged in!
         </sec:anonymous>
 
         <h2>All Movies</h2>
@@ -41,7 +41,7 @@
                 <p><h:outputLabel value="Stars: #{movie.avgRating}/5"/></p>
             </h:form>
                 <h:form prependId="false">
-                    <h:commandButton value="Movie Details" action="#{moviesController.selectMovie(movie)}" class="btn"/>
+                    <h:commandButton value="Movie Details" action="#{moviesController.selectMovie(movie)}" class="btn" p:data-mid = "#{movie.id}" id="MBtnId_#{movie.id}"/>
                 </h:form>
             </div>
         </c:forEach>
